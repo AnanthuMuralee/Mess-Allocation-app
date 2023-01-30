@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Student_Profile</title>
+  <title>Admin Mess</title>
 </head>
 
 <!-- Bootstrap  -->
@@ -51,41 +51,26 @@
       <div class="col-md-5 border-right">
         <div class="p-3 py-5">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="text-right">Profile Settings</h4>
-          </div>
-          {% for message in get_flashed_messages() %}
-        <center><b><div class="alert alert-info" style="width:60%;">{{ message }}</div></b></center>
-    {% endfor %} 
+            <h4 class="text-right">{{ user['name'] }} - {{ user['username'] }}</h4>
+          </div> 
 
           <form method=post>  
             <div class="container">   
                   <div class="row mt-3">
-            <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="Enter Name" value="{{ user['name'] }}" disabled></div>
-            <div class="col-md-12"><label class="labels">Roll Number</label><input type="text" class="form-control" placeholder="Enter Roll Number" value="{{ user['username'] }}" disabled></div>
             
-            
-            <div class="col-md-12"><label for="gender" class="labels">Gender</label>
-            <input type="text" name="gender" placeholder="Select gender" class="form-control" value="{{ request.form['gender'] or user['gender'] }}" disabled></input></div>
-            
-            <div class="col-md-12"><label for="hostel" class="labels">Hostel</label>
-            <input type="text" name="hostel" placeholder="Enter Hostel Name" class="form-control" value="{{ request.form['hostel'] or user['hostel'] }}" disabled></input></div>
-            
-            <div class="col-md-12"><label for="room" class="labels">Room</label>
-            <input type="text" name="room" placeholder="Enter Room no" class="form-control" value="{{ request.form['room'] or user['room'] }}" disabled></input></div>
-            
-            <div class="col-md-12"><label for="mess" class="labels">Mess</label>
-            <input type="text" name="mess" placeholder="Mess Allotted" class="form-control" value="{{ request.form['mess'] or user['mess'] }}" disabled></input></div>
-            
-            <div class="col-md-12"><label class="labels">Mess Due</label><input type="text" class="form-control" placeholder="Enter Mess Dues" value="{{ user['due'] }}" disabled></div>
           </div>
           <div class="mt-5 text-center">
-          <button class="btn btn-dark profile-button" type="submit" name="action" value="edit">Edit profile</button>
-          <button class="btn btn-dark profile-button" type="submit" name="action" value="payment">Payment</button>
-          {% if flag == True %}
-          <button class="btn btn-dark profile-button" type="submit" name="action" value="continue">Continue</button>
-          {% else %}
-          {% endif %}
-            </div>   
+          {% for mess in mess %}
+          <button style="margin:3%;"class="btn btn-light" type="submit" name="action" value="{{mess['name']}}">{{mess['name'].upper()}}</button>
+          {% endfor %}
+          </div>  
+          <br>
+          <br>
+          <div class="mt-5 text-center">
+            <button style="margin:1.5%;" class="btn btn-dark profile-button" type="submit" name="action" value="goback">Go Back</button>
+            <button style="margin:1.5%;" class="btn btn-dark profile-button" type="submit" name="action" value="addmess">Add Mess</button>
+            <button style="margin:1.5%;" class="btn btn-dark profile-button" type="submit" name="action" value="deletemess">Delete Mess</button>
+          </div> 
         </form> 
           </div>
       </div>

@@ -48,7 +48,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
     </head>    
     <body>    
-        <center> <h1> Student Login Form </h1> </center>
+        <center> <h1> Mess Allocation System </h1> </center>
         {% for message in get_flashed_messages() %}
         <center><b><div class="alert alert-info" style="width:60%;">{{ message }}</div></b></center>
     {% endfor %}   
@@ -69,7 +69,7 @@
                 <button type="submit">Login</button>   
                 <input type="checkbox" checked="checked"> Remember me   
                 <button type="button" class="cancelbtn"> Cancel</button>   
-                Forgot <a href="#"> password? </a>   
+                <a href="{{ url_for('forgot_password') }}">Forgot password? </a>   
             </div>   
         </form>     
     </body>     

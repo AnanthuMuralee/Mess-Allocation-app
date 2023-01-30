@@ -26,6 +26,20 @@
 
 <body>
   <div class="container rounded bg-white mt-5 mb-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          </ul>
+          <span class="navbar-text">
+            <a href="{{ url_for('index') }}">Logout</a>
+          </span>
+        </div>
+      </div>
+    </nav>
     <div class="row">
       <div class="col-md-3 border-right">
         <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px"
@@ -50,10 +64,18 @@
                   <div class="row mt-3">
             <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="Enter Name" value="{{ user['name'] }}" disabled></div>
             <div class="col-md-12"><label class="labels">Roll Number</label><input type="text" class="form-control" placeholder="Enter Roll Number" value="{{ user['username'] }}" disabled></div>
-            
-            
-            <div class="col-md-12"><label for="gender" class="labels">Gender</label>
-            <input type="text" name="gender" placeholder="Select gender" class="form-control" value="{{ request.form['gender'] or user['gender'] }}"></input></div>
+            <div class="col-md-12">
+              <label class="labels">Gender</label>
+              <SELECT class="form-control" id="gender" name="gender">
+                  {% if user['gender']  == "Male" %}
+                      <OPTION value="Male"selected>Male</OPTION>
+                      <OPTION value="Female">Female</OPTION>
+                  {% elif user['gender']  == "Female" %}
+                      <OPTION value="Male">Male</OPTION>
+                      <OPTION value="Female"selected>Female</OPTION>
+                  {% endif %}
+              </SELECT>
+            </div>
             
             <div class="col-md-12"><label for="hostel" class="labels">Hostel</label>
             <input type="text" name="hostel" placeholder="Enter Hostel Name" class="form-control" value="{{ request.form['hostel'] or user['hostel'] }}"></input></div>
